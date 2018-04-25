@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const todolistController = require('../controllers/todolist');
+const todolistController = require('../controllers/todoitems');
 
 router.get('/', todolistController.readAll);
 router.get('/:todoitem_id', todolistController.readOne);

@@ -1,27 +1,27 @@
 const knex = require('../database.js');
 
 const readAll = () => {
-  return knex('todoitems')
+  return knex('todolist')
   .then( rows => rows )
-  .catch( error => { console.error(error); };)
+  .catch( error => { console.error(error); })
 };
 
 const readOne = todoitem_id => {
-  return knex('todoitems').where('id', todoitem_id)
+  return knex('todolist').where('id', todoitem_id)
   .then ( rows => rows[0] )
   .catch ( error => { console.error(error); })
 }
 
-const create = ({title, content}) => {
-  return knex('todoitems')
+const create = ({priority, todoitem, completed}) => {
+  return knex('todolist')
   .returning('*')
-  .insert({ title, content })
+  .insert({priority, todoitem, completed})
   .then( row => row[0] )
   .catch( error => { console.error(error); })
 }
 
 const update = (todoitem_id, updates) => {
-  return knex('todoitems')
+  return knex('todolist')
   .returning('*')
   .update({...updates, updated_at: new Date( Date.now()).toISOString() })
   .where('id', todoitem_id)
@@ -30,7 +30,7 @@ const update = (todoitem_id, updates) => {
 }
 
 const destroy = todoitem_id => {
-  return knex('todoitems')
+  return knex('todolist')
   .returning('*')
   .del()
   .where('id', todoitem_id)
