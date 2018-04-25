@@ -1,4 +1,4 @@
-const knex = require('../db');
+const knex = require('../database.js');
 
 const readAll = () => {
   return knex('todoitems')
