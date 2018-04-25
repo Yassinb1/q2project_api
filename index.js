@@ -4,9 +4,13 @@ const cors = require('cors');
 const morgan = require('morgan');
 const PORT = process.env.PORT || 3005;
 
-const calendarRoutes = require(./routes/calendar);
+const calendarRoutes = require(./routes/todolist);
 
 
 app.listen(PORT, () => {
-  console.log(`API in action. Listening on port # ${PORT}`)
+  console.log(`API is running. Listening on port # ${PORT}`)
 });
+
+
+
+module.exports = app;
